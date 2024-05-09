@@ -1,3 +1,7 @@
+.venv
+renv
+.quarto
+
 # Borrowed from https://github.com/hadley/r4ds/blob/main/.gitignore
 .Rproj.user
 .Rhistory
