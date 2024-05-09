@@ -1,1 +1,1 @@
-Sitemap: https://elements.andres.cat/sitemap.xml
+Sitemap: https://catalandres.github.io/elements/sitemap.xml
