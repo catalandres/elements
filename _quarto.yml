@@ -1,3 +1,5 @@
+# cSpell:disable
+
 project:
   type: book
   output-dir: _book
@@ -13,6 +15,7 @@ book:
     right: |
       Built with <a href="https://quarto.org/">Quarto</a>. Hosted in GitHub Pages.
   site-url: https://elements.andres.cat/
+  # site-url:  https://catalandres.github.io/elements/
   repo-url: https://github.com/catalandres/elements/
   repo-branch: main
   repo-actions: [edit, issue]
@@ -30,3 +33,5 @@ format:
   pdf:
     documentclass: scrreprt
 
+execute:
+  freeze: auto
