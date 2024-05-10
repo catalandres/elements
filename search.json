@@ -20,13 +20,43 @@
     ]
   },
   {
+    "objectID": "style/naming.html",
+    "href": "style/naming.html",
+    "title": "2  Naming",
+    "section": "",
+    "text": "2.1 General rules",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Naming</span>"
+    ]
+  },
+  {
+    "objectID": "style/naming.html#general-rules",
+    "href": "style/naming.html#general-rules",
+    "title": "2  Naming",
+    "section": "",
+    "text": "Any exception to this naming convention must be uncontroversial, generally accepted by the whole team, and well documented.\n\n\n2.1.1 Labels\n\nUser-exposed labels must be informative, expositive, and neutral.\nDo not include question marks in the label.\nNo corporate jargon, no acronyms, no abbreviations. When designing a user-exposed label, name it so that it would make sense to a new employee in their first day of work. Abbreviations and acronyms are OK only if they appear in a general purpose dictionary.\nTo reduce confusion, two configuration components of the same type that are exposed to the user will not share the same label. Exceptions to this rule are admissible as long as the components that would bear the same name are not visible to the user at the same time, they do not belong to the same metadata category, or they can be argued to be different enough.\n\n\n\n2.1.2 Developer names\n\nDeveloper names should closely follow the contents of the label whenever possible.\nUse PascalCase (uppercase camelCase) in all developer names. This improves both ergonomics (reduced chances of repeated stress injury) and consistency (Salesforce’s default naming for standard metadata components is PascalCase).",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Naming</span>"
+    ]
+  },
+  {
+    "objectID": "style/naming.html#fields",
+    "href": "style/naming.html#fields",
+    "title": "2  Naming",
+    "section": "2.2 Fields",
+    "text": "2.2 Fields\n\n2.2.1 Address, email, phone and URL fields\n\nUnless there is another way to denote the data type, all fields will include whether the underlying data is an address, an email, a phone number or a URL (or website).\n\n\n\n2.2.2 Checkbox fields\n\nThe label should not start with a verb in personal form, but, typically, with a noun or an adjective.\nThe no-question-marks-in-labels rule applies here strictly.\nThe developer name should take the form of a question that can be answered with a yes/no answer, typically starting with Is, Has, Does, Do.\n\n\n\n2.2.3 Date, time and date/time fields\n\nIn Date fields, the word Date or Day will appear in the label and developer name, unless there is another way to denote the data type.\nIn Time fields, the word Time or Hour will appear in the label and developer name, unless there is another way to denote the data type.\nThe same will be true for Date/Time fields, with Moment or Timestamp as good examples of ways to incorporate the data type into the name of the field.\n\n\n\n2.2.4 Number, currency, and percent fields",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Naming</span>"
+    ]
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "2  Summary",
+    "title": "3  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.",
     "crumbs": [
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summary</span>"
     ]
   },
   {
