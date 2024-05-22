@@ -22,6 +22,7 @@ book:
   chapters:
     - index.qmd
     - intro.qmd
+    - style/naming.qmd
     - summary.qmd
     - references.qmd
 
