@@ -30,7 +30,7 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-search/fuse.min.js"></script>
 <script src="../site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="../">
-<link href="../summary.html" rel="next">
+<link href="../style/apex.html" rel="next">
 <link href="../intro.html" rel="prev">
 <script src="../site_libs/quarto-html/quarto.js"></script>
 <script src="../site_libs/quarto-html/popper.min.js"></script>
@@ -134,8 +134,20 @@ ul.task-list li input[type="checkbox"] {
 </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="../style/apex.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Apex</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../style/users.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Usernames</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="../summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item">
@@ -166,7 +178,9 @@ ul.task-list li input[type="checkbox"] {
   <li><a href="#date-time-and-datetime-fields" id="toc-date-time-and-datetime-fields" class="nav-link" data-scroll-target="#date-time-and-datetime-fields"><span class="header-section-number">2.2.3</span> Date, time and date/time fields</a></li>
   <li><a href="#number-currency-and-percent-fields" id="toc-number-currency-and-percent-fields" class="nav-link" data-scroll-target="#number-currency-and-percent-fields"><span class="header-section-number">2.2.4</span> Number, currency, and percent fields</a></li>
   </ul></li>
-  <li><a href="#users" id="toc-users" class="nav-link" data-scroll-target="#users"><span class="header-section-number">2.3</span> Users</a></li>
+  <li><a href="#auto-number" id="toc-auto-number" class="nav-link" data-scroll-target="#auto-number"><span class="header-section-number">2.3</span> Auto Number</a></li>
+  <li><a href="#formula" id="toc-formula" class="nav-link" data-scroll-target="#formula"><span class="header-section-number">2.4</span> Formula</a></li>
+  <li><a href="#users" id="toc-users" class="nav-link" data-scroll-target="#users"><span class="header-section-number">2.5</span> Users</a></li>
   </ul>
 <div class="toc-actions"><ul><li><a href="https://github.com/catalandres/elements/edit/main/style/naming.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/catalandres/elements/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div></nav>
     </div>
@@ -240,10 +254,28 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="number-currency-and-percent-fields" class="level3" data-number="2.2.4">
 <h3 data-number="2.2.4" class="anchored" data-anchor-id="number-currency-and-percent-fields"><span class="header-section-number">2.2.4</span> Number, currency, and percent fields</h3>
+<ul>
+<li>We encourage dropping <code>NumberOf</code> in Number fields if the meaning of the field is clear without those words.</li>
+<li>Do not use “#” as a stand-in for the word “Number” in the field’s label.</li>
+<li>In Percent fields there should be a word making evident that the value of the field is a percentage, ratio, proportion or margin. If applicable, it should make explicit with respect to what.</li>
+<li>In Currency fields, consider adding <code>Amount</code> or a similar term if the meaning of the field is unclear.</li>
+</ul>
 </section>
 </section>
-<section id="users" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="users"><span class="header-section-number">2.3</span> Users</h2>
+<section id="auto-number" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="auto-number"><span class="header-section-number">2.3</span> Auto Number</h2>
+<ul>
+<li>There is an option to set the <code>Name</code> field as an Auto Number field. When <code>Name</code> is Auto Number, consider renaming its label to “(name of the object) Code”, “(name of the object) Number”, or similar.</li>
+</ul>
+</section>
+<section id="formula" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="formula"><span class="header-section-number">2.4</span> Formula</h2>
+<ul>
+<li>Some style guides enforce using <code>_f</code> as a suffix in the developer name of any formula, to differentiate between stored-value and calculated fields. This can be advantageous, because the conversion between a non-formula field into a formula field, or vice versa, requires the manual intervention of a release manager. Adding the suffix is neither encouraged or discouraged, as this convention is relatively onerous.</li>
+</ul>
+</section>
+<section id="users" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="users"><span class="header-section-number">2.5</span> Users</h2>
 
 
 </section>
@@ -665,8 +697,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="../summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="../style/apex.html" class="pagination-link" aria-label="Apex">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Apex</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
