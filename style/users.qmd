@@ -1,0 +1,26 @@
+# Usernames
+
+Users will be named following the following policy:
+
+- Users in Production:
+
+    ```
+    [user email].[MyDomain name of the org system]
+    ```
+
+    Example: `ava.gardner@acmecorp.com.acmesales`
+
+- Users in a sandbox:
+
+    ```
+    [user email].[MyDomain name of the org system].[name of the sandbox]
+    ```
+
+    Example:`spencer.tracy@acmecorp.com.acmesales.dev`
+
+## Motivation
+
+Usernames must be globally unique across all Salesforce orgs and customers.
+While emails are unique within the organization, when an organization has (or will have, or will continue to have) multiple Salesforce org systems[^1], and sandbox names are not unique across org systems, so we need to use the MyDomain name to namespace them and make them truly unique.
+
+[^1]: An "org system" is a production environment and all its sandboxes.

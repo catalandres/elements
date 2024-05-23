@@ -1,0 +1,80 @@
+# Apex
+
+## General principles
+
+The goal is to have code that can be maintained well past the moment it goes live.
+Code that does not abide by these principles will have no future.
+
+### Standardization
+
+- Sticking, strictly or loosely, to a standard style reduces the ambiguity of the systema nd leads to more maintainable solutions.
+- The usage of tools like Prettier is encouraged, not required. This type of tools impose a format which, even if it does not allow much customization, is a positive step towards standardization.
+
+### Clarity
+
+- When variables, objects, classes are named properly, it is easier to understand the purpose of our code.
+
+### Expressivity and readability
+
+- Coding is, first and foremost, a communicative act containing a narrative exercise.
+- Poorly formulated code should be addressed with the same degree of tolerance as poor grammar or lousy spelling in professional communication.
+- Code is not only a message to be read by a machine, but also must be easy to understand by other team members, present and future, as well as the original developer's future self, to ensure its future maintainability.
+- The developer's intentions must be evident. Comments should not be necessary, but when they are they should provide sufficient context.
+
+## Triggers
+
+- There will only be one trigger per Salesforce object. The only exception to this rule will be those triggers installed as part of third-party packages, managed or unmanaged.
+- The filename of the trigger will be the developer name of the corresponding Salesforce object, in plural, because "Case" is a reserved word, and it would not be a legal name for a trigger or a class. As we should be using modern development tools (VisualStudio Code and the Salesforce CLI), metadata formatted according to the SFDX project format will add the metadata type to the extension of the XML file. That way we will get `Accounts.trigger` instead of `AccountTrigger.trigger`, which is redundant.
+
+|Object|Instead of this|Use this|Trigger filename|
+|---|---|---|---|
+|`Account`|~~`AccountTrigger`~~|`Accounts`|`Accounts.trigger`|
+|`Case`|~~`CaseTrigger`~~|`Cases`|`Cases.trigger`|
+|`Submission__c`|~~`SubmissionTrigger`~~|`Submissions`|`Submissions.trigger`|
+
+- Every trigger should contain **absolute zero business logic** and have **one and only one** line. In that line, the trigger calls an Apex class that, based on the trigger context and data, performs a triage and determines the work to be done in the data. Some refer to this "triage class" as a "trigger handler class".
+    - **Why do we want to remove all business logic from triggers?** Because the only way to test a trigger is to perform a database operation, and those are very expensive in terms of computing time. Well formulated unit tests should avoid database operations, and that can only happen if we move that logic to the triage class.
+    - **Can there be an exception to this rule?** Yes. A single trigger can call two different triage classes, corresponding to completely different applications sitting in the same Salesforce org. This would mean that the trigger would include two lines of code, but still the logic would belong in the triage class. In this case, however, we would further decouple those applications using Custom Metadata Types to determine which triage classes should be called for each trigger.
+
+## Classes
+
+### Class types and separation of concerns
+
+#### Triage class
+
+- A triage class takes the trigger context and data and performs the necessary operations to select which instances/records need to be treated and pass the values to a service class, or to an asynchronous class that will call a service class.
+- There should be only one triage class per object. In multi-application Salesforce orgs, it should be one triage class per object and application.
+- In general, triage classes do not perform any data modification operations directly (be it DML operations in after-save, or source data modifications in before-save trigger contexts). There can be exceptions if the operation to perform (e.g. some basic transformation, especially in before-save contexts) is minimal and there does not exist yet a service to hold the method.
+- The triage class is the one and only place where we make decisions on what to do based on the trigger context.
+- Use `Triage` or `Handler` as the suffix of the class name to denote the class type.
+
+#### Service class
+
+- A service class is a collection of typically static methods that performs operations over collections of records.
+- The service class is completely abstracted from the trigger context. It contains business and database logic. And it must be designed to be called from any context other than a trigger: Flow actions, asynchronous jobs, API endpoints, etc.
+- Use `Service` as the suffix of the class name to denote the class type. The scope of the class will be denoted by its prefix. It can be as broad (e.g. `CaseService`) or narrow (e.g. `OpportunityStageTransitionService`) as we need it to be.
+
+#### Accessor class
+
+- An accessor class (also referred to as "selector class") takes the responsibility to query the database. Ideally, all database queries should be done through an accessor class and not through inline SOQL/SOSL.
+- An advantage of using accessor classes is that they can be used to inject database results to be used in tests without having to perform time-expensive database operations, by strategically using `@testAccessible` decorators on private class properties.
+- Use `Accessor` as the suffix for accessor classes.
+
+#### Asynchronous job class
+
+- The asynchronous job class is called from another context, trigger or otherwise, using the standard means (e.g. `enqueueJob()` for Queueable classes).
+- The class only contains the logic to manage the job (similar to the triage class) and generally delegates the business logic to a service.
+- These classes must implement either the Queueable (preferrable) or Batchable (fallback) interface.
+- Use `Job` as the suffix for asynchronous job classes.
+
+#### Utility classes related to an SObject type
+
+- This class type is used to perform small operations in SObjects and their collections.
+- Use the same naming convention as in triggers: name of the SObject in plural. Drop the suffix `Util`.
+
+#### Test classes
+
+- (More details under Testing standards document.)
+- Ensure that `Test` appears in the name of the class and it is a suffix and not a prefix.
+- Consider differentiating between functional and unit tests by using different suffixes (e.g. `UnitTest`, `FunctionalTest`).
+- If the test class is a unit test for an existing class, ensure that the left side of the name matches the name of the class under test, so that they can sit side-by-side in any file list.

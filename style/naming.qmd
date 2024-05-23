@@ -36,4 +36,17 @@
 
 ### Number, currency, and percent fields
 
+- We encourage dropping `NumberOf` in Number fields if the meaning of the field is clear without those words.
+- Do not use "#" as a stand-in for the word "Number" in the field's label.
+- In Percent fields there should be a word making evident that the value of the field is a percentage, ratio, proportion or margin. If applicable, it should make explicit with respect to what.
+- In Currency fields, consider adding `Amount` or a similar term if the meaning of the field is unclear.
+
+## Auto Number
+
+- There is an option to set the `Name` field as an Auto Number field. When `Name` is Auto Number, consider renaming its label to "(name of the object) Code", "(name of the object) Number", or similar.
+
+## Formula
+
+- Some style guides enforce using `_f` as a suffix in the developer name of any formula, to differentiate between stored-value and calculated fields. This can be advantageous, because the conversion between a non-formula field into a formula field, or vice versa, requires the manual intervention of a release manager. Adding the suffix is neither encouraged or discouraged, as this convention is relatively onerous.
+
 ## Users
